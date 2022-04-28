@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -12,7 +13,6 @@ public class Class1
         var services = new ServiceCollection();
 
         services.AddSingleton<IChild, Child>();
-
         services.AddTransient<IParent, Parent>();
 
 
@@ -24,9 +24,7 @@ public class Class1
         await using (var scope = provider.CreateAsyncScope())
         {
             var parent2 = scope.ServiceProvider.GetRequiredService<IParent>();
-
             var parent3 = scope.ServiceProvider.GetRequiredService<IParent>();
-
 
 
             await using (var scope2 = scope.ServiceProvider.CreateAsyncScope())
@@ -39,7 +37,7 @@ public class Class1
     public interface IParent
     { }
 
-    public class Parent : IParent
+    public class Parent : IParent, IDisposable
     {
         private readonly IChild _child;
 
@@ -47,13 +45,17 @@ public class Class1
         {
             _child = child;
         }
+
+        public void Dispose() { }
     }
 
     public interface IChild
     { }
 
-    public class Child : IChild
-    { }
+    public class Child : IChild, IAsyncDisposable
+    {
+        public async ValueTask DisposeAsync() { }
+    }
 
 
 
