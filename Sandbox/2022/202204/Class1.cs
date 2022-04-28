@@ -13,6 +13,7 @@ public class Class1
         var services = new ServiceCollection();
 
         services.AddSingleton<IChild, Child>();
+        services.AddScoped<Test>();
         services.AddTransient<IParent, Parent>();
 
 
@@ -56,6 +57,8 @@ public class Class1
     {
         public async ValueTask DisposeAsync() { }
     }
+
+    public class Test { }
 
 
 
