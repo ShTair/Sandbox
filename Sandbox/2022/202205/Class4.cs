@@ -15,9 +15,16 @@ internal class Class4
         array = Enumerable.Range(1, 100).ToArray();
 
         // コンパイル時にfor相当の処理に最適化されるはず…？
+        Console.WriteLine("foreach array");
         foreach (var item in array)
         {
             Console.WriteLine(item);
+        }
+
+        Console.WriteLine("for array");
+        for (int i = 0; i < array.Length; i++)
+        {
+            Console.WriteLine(array[i]);
         }
 
 
@@ -27,6 +34,13 @@ internal class Class4
         var list = new List<int> { 1, 2, 3, 4 };
         list.Add(5);
         list = Enumerable.Range(1, 100).ToList();
+
+        Console.WriteLine("foreach list");
+        foreach (var item in list)
+        {
+            Console.WriteLine(item);
+        }
+
 
         // 複数要素入れたい場合はタプルが便利（もちろんタプルはリスト以外でも使える）
         var list2 = new List<(string, int)>();
