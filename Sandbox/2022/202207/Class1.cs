@@ -38,7 +38,7 @@
 
 
 
-//        // ジェネリックの中身の型が継承関係にあるとき、ジェネリック自身は継承関係とみなせるか？
+//        // ジェネリック型の中身の型が継承関係にあるとき、このジェネリクス自身は継承関係とみなせるか？
 
 //        IReadOnlyList<string> a1 = new List<string>();
 //        IReadOnlyList<object> a2 = a1;
@@ -63,6 +63,8 @@
 
 //        IComparer<object> a = Comparer<object>.Default;
 //        IComparer<string> b = a;
+
+
 
 
 //        // 両方満たす場合、双変性という。そんな状況あるかな？C#では作れないと思う。
