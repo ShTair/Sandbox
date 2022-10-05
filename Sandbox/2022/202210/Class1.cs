@@ -2,6 +2,7 @@
 
 namespace Sandbox._2022._202210;
 
+// https://devblogs.microsoft.com/dotnet/regular-expression-improvements-in-dotnet-7/
 internal partial class Class1
 {
     [GeneratedRegex(@"Bearer\s+(.+?)\s*$")]
